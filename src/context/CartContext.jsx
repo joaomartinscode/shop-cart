@@ -18,6 +18,14 @@ export const CartProvider = ({ children }) => {
 		});
 	};
 
+	const removeFromCart = (productId) => {
+		setCartItems((prev) => {
+			const updated = { ...prev };
+			delete updated[productId];
+			return updated;
+		});
+	};
+
 	// Calculate total items in the cart
 	const totalItems = Object.values(cartItems).reduce(
 		(total, qty) => total + qty,
@@ -25,7 +33,9 @@ export const CartProvider = ({ children }) => {
 	);
 
 	return (
-		<CartContext.Provider value={{ cartItems, addToCart, totalItems }}>
+		<CartContext.Provider
+			value={{ cartItems, addToCart, removeFromCart, totalItems }}
+		>
 			{children}
 		</CartContext.Provider>
 	);

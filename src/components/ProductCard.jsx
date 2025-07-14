@@ -20,45 +20,47 @@ const ProductCard = ({ product }) => {
 	};
 
 	return (
-		<div
-			style={{
-				border: "1px solid #ddd",
-				padding: 12,
-				marginBottom: 12,
-				maxWidth: 300,
-			}}
-		>
+		<div className="border border-gray-300 p-4 mb-4 max-w-xs rounded shadow-sm flex flex-col min-h-[400px]">
 			<img
 				src={product.image}
 				alt={product.title}
-				style={{
-					maxWidth: "100%",
-					height: "150px",
-					objectFit: "contain",
-					display: "block",
-				}}
+				className="w-full h-40 object-contain"
 			/>
-			<h3>{product.title}</h3>
-			<div>
-				<button onClick={decrement}>-</button>
-				<input
-					type="number"
-					value={quantity}
-					onChange={onQuantityChange}
-					style={{ width: 40, textAlign: "center", margin: "0 8px" }}
-					min={1}
-				/>
-				<button onClick={increment}>+</button>
+			<div className="mt-auto">
+				<h3 className="text-lg font-semibold mb-3">{product.title}</h3>
+				<div className="flex items-center gap-2 mb-3">
+					<button
+						onClick={decrement}
+						className="bg-gray-200 px-2 rounded hover:bg-gray-300"
+					>
+						-
+					</button>
+					<input
+						type="number"
+						value={quantity}
+						onChange={onQuantityChange}
+						className="w-12 text-center border rounded"
+						min={1}
+					/>
+					<button
+						onClick={increment}
+						className="bg-gray-200 px-2 rounded hover:bg-gray-300"
+					>
+						+
+					</button>
+				</div>
+				<button
+					onClick={handleAddToCart}
+					className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 w-full"
+				>
+					Add to Cart
+				</button>
 			</div>
-			<button onClick={handleAddToCart} style={{ marginTop: 8 }}>
-				{" "}
-				Add to Cart
-			</button>
 		</div>
 	);
 };
 
-ProductCard.PropTypes = {
+ProductCard.propTypes = {
 	product: PropTypes.object.isRequired,
 };
 
