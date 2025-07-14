@@ -29,9 +29,14 @@ const ProductCard = ({ product }) => {
 			}}
 		>
 			<img
-				src="{product.image}"
-				alt="{product.title}"
-				style={{ maxWidth: "100%", height: 150, objectFit: "contain" }}
+				src={product.image}
+				alt={product.title}
+				style={{
+					maxWidth: "100%",
+					height: "150px",
+					objectFit: "contain",
+					display: "block",
+				}}
 			/>
 			<h3>{product.title}</h3>
 			<div>
